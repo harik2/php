@@ -1,0 +1,80 @@
+create or replace trigger tr_veterans after update or insert  on veterans
+
+
+begin 
+ dbms_output.put_line('un veterans vient  d etre ajouté');
+
+end;
+
+-- trigger 
+create or replace trigger tr_veterans before update or insert  on veterans
+
+
+begin 
+ dbms_output.put_line('un veterans vient  d etre ajouté');
+
+end;
+
+create or replace trigger tr_veteras  before update or insert  or delete on veterans
+
+
+begin 
+if inserting then 
+ dbms_output.put_line('un veterans vient  d etre ajouté');
+end if;
+if deleting then 
+ dbms_output.put_line('un veterans vient  d etre sup');
+end if;
+if updating then 
+ dbms_output.put_line('un veterans vient  d etre upd');
+end if;
+
+end;
+-- trigger qui se decalenche lors la modifi d'un champs
+create trigger veterans_salaire after update of salaire on veterans
+begin 
+dbms_output.put_line('salaire modifié');
+
+end;
+
+
+create or replace trigger observer_salaire after  update of salaire on veterans
+for each row
+declare
+v_salaire_dif number ;
+begin
+
+if :new.salaire  > :old.salaire then 
+v_salaire_dif :=:new.salaire-:old.salaire;
+dbms_output.put_line('le salaire de '||:old.nom||' est  augementé de '||v_salaire_dif||'$');
+else 
+v_salaire_dif :=:old.salaire - :new.salaire;
+dbms_output.put_line('le salaire de '||:old.nom||' est  reduit de '||v_salaire_dif||'$');
+end if;
+
+end;
+
+-- trigger qui remet un salaire < 0 a 0
+create or replace trigger corriger_salaire before insert  on veterans
+for each row
+declare
+v_salaire_dif number ;
+begin
+
+if :new.salaire  < 0  then 
+v_salaire_dif :=0;
+end if;
+
+end;
+
+-- corriger un salaire < 0 (*-1)
+create or replace trigger corriger_salaire before insert  on veterans
+for each row
+
+begin
+
+if :new.salaire  < 0  then 
+:new.salaire :=  :new.salaire *-1;
+end if;
+
+end;
