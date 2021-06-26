@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REVISION FORMULAIRE </title>
+</head>
+<body>
+    
+    <form action="">
+        <table  align="center">
+            <tr>
+                <td>Prix :</td>
+                <td><input type="number" id="prix" name="prix"> </td>
+            </tr>
+            <tr>
+                <td>Quantité  :</td>
+                <td><input type="number" id="qte" name="qte"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="button"  onclick="calculer()">Calculer</button></td>
+            </tr>
+        </table>
+
+
+         
+         
+        
+    </form>
+
+    <script>
+
+           function calculer(){
+               //recuperer les champs prix et qte
+               var prix=document.getElementById('prix');
+               var qte=document.getElementById('qte');
+               var ttc=prix.value*qte.value;
+               alert("ttc ="+ttc+"DHS");
+
+           } 
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+.back{
+
+    background: url('images/vallee.png') no-repeat ;
+    height: 100vh;
+    background-size: cover;
+}
+
+.form{
+    background: #ffffffb4;
+}
