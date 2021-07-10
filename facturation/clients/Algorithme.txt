@@ -1,0 +1,25 @@
+Algorithme
+ Table_de_Multiplication
+ Var
+ N : entier
+DébutEcrire
+ 
+(‘Donner un nombre entier’)
+ L
+ire
+ (N)P
+our
+ i
+de
+ 1
+à
+ 10
+faireEcrire
+ 
+(‘le produit
+ 
+:’,N,’*’,i,’=’,i*N)
+ 
+Fin pour
+ 
+Fin
