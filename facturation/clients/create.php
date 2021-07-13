@@ -12,9 +12,17 @@
 <form action="store.php" method="post">
     Nom : <input type="text" name="nom"> 
     Prenom : <input type="text" name="prenom"> 
-    Email : <input type="email" name="email"> 
+    Email : <input type="email" name="email" onblur="unique(this.value)"> 
     <button>Valider</button>
 </form>
     
+
+
+    <script>
+        function unique(v){
+           
+        }
+    
+    </script>
 </body>
 </html>
