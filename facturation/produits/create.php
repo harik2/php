@@ -1,3 +1,8 @@
+<?php
+
+// print_r($_SERVER);
+// $chemin_projet=$_SERVER['DOCUMENT_ROOT'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,19 +16,23 @@
 
 
 <body>
+    <?php
+    define('BASE', $_SERVER['DOCUMENT_ROOT']);
+
+    include_once(BASE . "/facturation/_menu.php"); ?>
 
     <div class="container">
 
         <div class="row">
             <div class="col-md-6 mx-auto border mt-3 p-3">
-<?php 
-if(isset($_GET['m']) && $_GET['m']=='ok'){?>
-          <div class="alert alert-info text-center">
-              Ajout Ok
-          </div>
-          
-          <?php }?>
-            <form action="store.php" method="post" enctype="multipart/form-data">
+                <?php
+                if (isset($_GET['m']) && $_GET['m'] == 'ok') { ?>
+                    <div class="alert alert-info text-center">
+                        Ajout Ok
+                    </div>
+
+                <?php } ?>
+                <form action="store.php" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         Libellé: <input type="text" name="libelle" id="libelle" class="form-control">
                     </div>
@@ -36,9 +45,9 @@ if(isset($_GET['m']) && $_GET['m']=='ok'){?>
                     <div class="mb-3">
                         Photo: <input type="file" name="photo" id="photo" class="form-control">
                     </div>
-<div class="mb-3 text-center">
-    <button class="btn btn-primary col-md-6">Valider</button>
-</div>
+                    <div class="mb-3 text-center">
+                        <button class="btn btn-primary col-md-6">Valider</button>
+                    </div>
                 </form>
 
 
