@@ -10,6 +10,9 @@
 <?php if(isset($_GET['cn']) && $_GET['cn']=='no') {?>
     <h4>Login/mot de passe non valides</h4>
     <?php } ?>
+<?php if(isset($_GET['cn']) && $_GET['cn']=='act') {?>
+    <h4>Votre compyte n'ext pas encore activé</h4>
+    <?php } ?>
 <form action="check.php" method="post">
 Login : <input type="text" name="login" id="login">
 Mot de passe  : <input type="password" name="pwd" id="pwd">

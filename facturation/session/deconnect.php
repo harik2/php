@@ -1,6 +1,5 @@
 <?php 
-session_start();
-session_destroy();
-unset($_SESSION);
+include("../functions.php");
+fermer_session();
 header('location:login.php')
 ?>

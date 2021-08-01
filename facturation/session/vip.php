@@ -1,11 +1,13 @@
 <?php 
+include($_SERVER['DOCUMENT_ROOT'].'/facturation/functions.php');
 // if(isset($_COOKIE['prenom'])){
 //     echo htmlentities( $_COOKIE['prenom']);// contre XSS 
 // }
-session_start();
-if(!($_SESSION['login']=='admin' && $_SESSION['pwd']==1234)){
-header('location:login.php?cn=no');
-die();
+
+demarrer_session();
+if(checker($_SESSION['login'],$_SESSION['passe'])==false){
+    header("location:login.php?cn=no");
+    die();
 }
 
 ?>
@@ -18,7 +20,10 @@ die();
     <title>Document</title>
 </head>
 <body>
+    <div>
+        <?=get_flash()?>
+    </div>
    <a href="deconnect.php">Deconnxion</a> 
-BIENVENUE <?=$_SESSION['login']?>>
+BIENVENUE <?=$_SESSION['pseudo']?>>
 </body>
 </html>

@@ -1,10 +1,16 @@
 <?php 
-session_start();
-if(!($_SESSION['login']=='admin' && $_SESSION['pwd']==1234)){
-header('location:login.php?cn=no');
-die();
-}
+include('../functions.php');
+demarrer_session();
+// if(!($_SESSION['login']=='admin' && $_SESSION['pwd']==1234)){
+// header('location:login.php?cn=no');
+// die();
+// }
 
+
+if(checker($_SESSION['login'],$_SESSION['passe'])==false){
+    header("location:login.php?cn=no");
+    die();
+}
 
 ?>
 <!DOCTYPE html>
@@ -16,7 +22,7 @@ die();
     <title>Document</title>
 </head>
 <body>
-    HOME : <?=$_SESSION['login']?> 
+    HOME : <?=$_SESSION['pseudo']?> 
     
 </body>
 </html>
