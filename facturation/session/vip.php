@@ -21,7 +21,7 @@ if(checker($_SESSION['login'],$_SESSION['passe'])==false){
 </head>
 <body>
     <div>
-        <?=get_flash()?>
+        <?php get_flash()?>
     </div>
    <a href="deconnect.php">Deconnxion</a> 
 BIENVENUE <?=$_SESSION['pseudo']?>>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch</title>
+    <style>
+        #erreur {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="erreur"></div>
+    <form action="services.php" method="POST" id="form_create">
+        Email : <input type="text" name="email" id="email">
+        Mot de passe : <input type="password" name="passe" id="passe">
+        Confirmation <input type="password" name="conf" id="conf">
+        TEL <input type="text" name="tel" id="tel" placeholder="ex: 05 22 34 56 77" onkeyup="verifier_tel()">
+        <button type="button" onclick="verifier()">valider</button>
+    </form>
+
+    <script>
+     
+        let div_erreur = document.getElementById('erreur');
+
+        function verifier_tel() {
+            div_erreur.innerHTML="";
+            let tel = document.getElementById('tel');
+            let modele_tel = /^0[56][ _/]{0,}([0-9]{2}[ _/]{0,}){4}$/;
+            if(!modele_tel.test(tel.value)){
+            div_erreur.innerHTML+="tel incorrect";
+            }
+        }
+        function verifier() {
+
+            //recuperer les champs (js DOm)
+            let email = document.getElementById('email');
+            let passe = document.getElementById('passe');
+            let conf = document.getElementById('conf');
+            let modele_email = /^[a-z]{2,}@gmail[.]com$/;
+
+            div_erreur.innerHTML = "";
+
+            // verifier les champs 
+            if (email.value.trim() == "") {
+                // alert('email obligatoire');
+                div_erreur.innerHTML += "Email obligatoire<br>";
+
+            } else
+                if (!modele_email.test(email.value)) {
+                    // alert('email obligatoire');
+                    div_erreur.innerHTML += "Email n'est pas correct<br>";
+
+                }
+            if (passe.value.trim() == "") {
+                // alert('mot de passe  obligatoire');
+                div_erreur.innerHTML += "mot de passe  obligatoire<br>";
+            }
+            if (passe.value != conf.value) {
+
+                div_erreur.innerHTML += "les 2 mots de passe me correspondent pas<br>";
+            }
+            if (div_erreur.innerHTML == "") {
+                document.getElementById('form_create').submit();
+            }
+
+        }
+    </script>
+</body>
+
+</html>
